@@ -1,4 +1,5 @@
 #include <VulkanRenderer/Core/Window.h>
+#include <vulkan/vulkan.h>
 #include <VulkanRenderer/Core/RendererLogger.h>
 #include <VulkanRenderer/Events/KeyEvent.h>
 #include <VulkanRenderer/Events/MouseEvent.h>
@@ -50,6 +51,10 @@ namespace VulkanRenderer{
         glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
         glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
         glfwWindowHint(GLFW_OPENGL_FORWARD_COMPAT, true);
+
+        uint32_t extensionCount = 0;
+        vkEnumerateInstanceExtensionProperties(nullptr, &extensionCount, nullptr);
+        coreLogInfo("Extension instances available are -- {}", extensionCount);
 
 
         _windowHandler = glfwCreateWindow((int)data.width, (int)data.height, data.title.c_str(), nullptr, nullptr);
