@@ -5,6 +5,7 @@
 #include <VulkanRenderer/Events/ApplicationEvent.h>
 
 namespace VulkanRenderer{
+    Window* Window::instance = nullptr;
 
     static void GLFWErrorCallback(int error, const char* description){
         coreLogError("GLFWErrorCallback MSG --- (Error cCode -> {}): {}", error, description);
@@ -15,6 +16,7 @@ namespace VulkanRenderer{
     }
 
     Window::Window(const WindowProperties& props) {
+        instance = this;
 
         initialize(props);
     }

@@ -16,6 +16,9 @@ set(
 	${INCLUDE_DIR}/Core/RendererLogger.cpp
 	${INCLUDE_DIR}/Core/Application.cpp
 	${INCLUDE_DIR}/Core/Window.cpp
+
+	${INCLUDE_DIR}/Core/Layer.cpp
+	${INCLUDE_DIR}/Core/LayerStack.cpp
 )
 
 set(

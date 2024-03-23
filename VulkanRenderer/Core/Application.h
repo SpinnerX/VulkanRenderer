@@ -2,6 +2,7 @@
 #include <VulkanRenderer/Core/core.h>
 #include <VulkanRenderer/Core/Window.h>
 #include <VulkanRenderer/Events/ApplicationEvent.h>
+#include <VulkanRenderer/Core/LayerStack.h>
 #include <cassert>
 #include <assert.h>
 
@@ -25,6 +26,15 @@ namespace VulkanRenderer{
 
         void onEvent(Event& event);
 
+        static Application& Get() { return *instance; }
+
+        static Window& GetWindow() { return *instance->window; }
+
+        void close(){ isRunning = false; }
+
+        void pushLayer(Layer* layer);
+        void pushOverlay(Layer* layer);
+
     private:
         bool onWindowClose(WindowCloseEvent& e);
         bool onWindowResize(WindowResizeEvent& e);
@@ -33,7 +43,7 @@ namespace VulkanRenderer{
         bool isRunning;
         static Application* instance;
         Ref<Window> window;
-
+        LayerStack layerStack;
         float lastFrameTime = 0.0f; // @note Time it took rendering prev frame.
     };
 

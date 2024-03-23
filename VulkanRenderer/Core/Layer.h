@@ -1,6 +1,7 @@
 #pragma once
 #include <VulkanRenderer/Core/core.h>
 #include <VulkanRenderer/Events/Event.h>
+#include <VulkanRenderer/Core/Timestep.h>
 #include <VulkanRenderer/Core/RendererLogger.h>
 
 namespace VulkanRenderer{
@@ -23,10 +24,10 @@ namespace VulkanRenderer{
         // Updating the layer is updated when the application calls onUpdate
         virtual void onUpdate(Timestep ts){}
 
-        virtual void onImguiRender(){}
-
         // Whichh is wherever events get sent to the layer, it'll know how to handle that event.
         virtual void onEvent(Event& event){}
+
+        virtual void onRender(){}
 
         inline const std::string& getName() const { return _debugName; }
 
