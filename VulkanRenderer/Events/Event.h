@@ -96,17 +96,17 @@ namespace VulkanRenderer{
 
 };
 
-namespace fmt{
-    template<>
-    struct formatter<VulkanRenderer::Event> {
-        template<typename ParseContext>
-        constexpr auto parse(ParseContext& ctx) { return ctx.begin(); }
+// namespace fmt{
+//     template<>
+//     struct fmt::formatter<VulkanRenderer::Event> {
+//         template<typename ParseContext>
+//         constexpr auto parse(ParseContext& ctx) { return ctx.begin(); }
 
-        auto format(const VulkanRenderer::Event& p, format_context& ctx) const -> format_context::iterator {
-            // ctx.out() is an output iterator to write to.
-            std::stringstream stream;
-            stream << p;
-            return format_to(ctx.out(), "{}", stream.str());
-        }
-    };
-};
+//         auto format(const VulkanRenderer::Event& p, fmt::format_context& ctx) const -> fmt::format_context::iterator {
+//             // ctx.out() is an output iterator to write to.
+//             std::stringstream stream;
+//             stream << p;
+//             return fmt::format_to(ctx.out(), "{}", stream.str());
+//         }
+//     };
+// };
